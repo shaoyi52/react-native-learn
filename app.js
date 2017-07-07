@@ -1,61 +1,123 @@
 // this will start our app
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Platform
+} from 'react-native';
 
-import { Platform } from 'react-native';
-import { Navigation } from 'react-native-navigation';
-import registerScreens from './screens';
+import { StackNavigator } from 'react-navigation';
 
-// screen related book keeping
-registerScreens();
+import Banner from './components/Banner';
+import Row from './components/Row';
 
-const tabs = [{
-    label: 'Navigation',
-    screen: 'example.Types',
-    icon: require('./img/list.png'),
-    title: 'Navigation Types',
-}, {
-    label: 'Actions',
-    screen: 'example.Actions',
-    icon: require('./img/swap.png'),
-    title: 'Navigation Actions',
-}];
 
-if (Platform.OS === 'android') {
-    tabs.push({
-        label: 'Transitions',
-        screen: 'example.Transitions',
-        icon: require('./img/transform.png'),
-        title: 'Navigation Transitions',
-    });
+import SimpleStack from './screens/routeExample/SimpleStack';
+import Register from './screens/register/register';
+import IconShow from './screens/iconShow/IconShow';
+import List from './screens/list/List';
+import Demo from './screens/demo/Demo';
+
+const Routes={
+  SimpleStack:{
+    name: 'Stack Example',
+    description: 'A card stack',
+    screen: SimpleStack,
+  },
+  
+  Register:{
+    name: 'Stack Example',
+    description: 'A card stack',
+    screen: Register,
+  },
+  Icons:{
+    name: 'Icons',
+    description: 'A card stack',
+    screen: IconShow,
+  },
+  List:{
+    name: 'Icons',
+    description: 'List',
+    screen: List,
+  },
+  Demo:{
+    name: 'Icons',
+    description: '测试页',
+    screen: Demo,
+  }
+
+
 }
 
+class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Banner/>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+      </View>
+    );
+  }
+}
 
-Navigation.startTabBasedApp({
-    tabs,
-    tabsStyle: {
-        tabBarBackgroundColor: '#003a66',
-        navBarButtonColor: '#ffffff',
-        tabBarButtonColor: '#ffffff',
-        navBarTextColor: '#ffffff',
-        tabBarSelectedButtonColor: '#ff505c',
-        navigationBarColor: '#003a66',
-        navBarBackgroundColor: '#003a66',
-        statusBarColor: '#002b4c',
-        tabFontFamily: 'BioRhyme-Bold',
+const MainScreen = ({navigation}) =>(
+  <ScrollView>
+      <Banner/>
+      {Object.keys(Routes).map((routeName:string)=>(
+        
+        <Row key={routeName} title={routeName}  onPress={()=>{navigation.navigate(routeName)}}/>
+        
+        ))}
+      <Row title='列表列表列表' onPress={()=>{}}/>
+  </ScrollView>
+)
+const AppNavigator = StackNavigator(
+  {
+    ...Routes,
+    Index: {
+      screen: MainScreen,
     },
-    appStyle: {
-        tabBarBackgroundColor: '#003a66',
-        navBarButtonColor: '#ffffff',
-        tabBarButtonColor: '#ffffff',
-        navBarTextColor: '#ffffff',
-        tabBarSelectedButtonColor: '#ff505c',
-        navigationBarColor: '#003a66',
-        navBarBackgroundColor: '#003a66',
-        statusBarColor: '#002b4c',
-        tabFontFamily: 'BioRhyme-Bold',
-    },
-    drawer: {
-        left: {
-            screen: 'example.Types.Drawer'
-        }
-    }
+  },
+  {
+    initialRouteName: 'Index',
+    headerMode: 'none',
+
+    /*
+   * Use modal on iOS because the card mode comes from the right,
+   * which conflicts with the drawer example gesture
+   */
+    mode: Platform.OS === 'ios' ? 'modal' : 'card',
+  }
+);
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,    
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
+export default AppNavigator;

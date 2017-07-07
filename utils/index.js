@@ -6,11 +6,12 @@ const deviceW = Dimensions.get('window').width
 // UI 默认给图是 750
 const basePx = 750
 //px转dp 方法一
-export px2dp= function px2dp(uiElementPx) {
+export function px2dp(uiElementPx) {
     return uiElementPx *  deviceW / basePx
 }
+
 //px转dp 方法二
-export.pxTodp = function pxTodp(px:number):number{
+export function pxTodp(px:number):number{
     if(typeof px!=='number'){
       console.error('输入必须为数字')
       return px;
