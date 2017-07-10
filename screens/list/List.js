@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { Image, ScrollView, View } from 'react-native';
 import { List } from 'antd-mobile';
-
+import Header from '../../common/Header';;
 const Item = List.Item;
 const Brief = Item.Brief;
 
@@ -9,12 +9,15 @@ class BasicList  extends Component {
  
   render() {
     return (
+
+    
     <ScrollView
       style={{ flex: 1, backgroundColor: '#f5f5f9' }}
       automaticallyAdjustContentInsets={false}
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}
     >
+      <Header {...this.props} title='列表UI' hasPress={true}/>
       <List renderHeader={() => '左侧无icon'}>
         <Item data-seed="logId">标题文字点击无反馈，文字超长则隐藏，文字超长则隐藏</Item>
         <Item wrap>文字超长折行文字超长折行文字超长折行文字超长折行文字超长折行</Item>

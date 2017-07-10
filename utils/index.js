@@ -1,8 +1,9 @@
 import {PixelRatio,Dimensions} from 'react-native'
 
-const deviceH = Dimensions.get('window').height
-const deviceW = Dimensions.get('window').width
-
+const deviceH = Dimensions.get('window').height;
+const deviceW = Dimensions.get('window').width;
+const ratio=PixelRatio.get();
+const pixel=1 / PixelRatio.get();
 // UI 默认给图是 750
 const basePx = 750
 //px转dp 方法一

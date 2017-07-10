@@ -19,33 +19,39 @@ import Register from './screens/register/register';
 import IconShow from './screens/iconShow/IconShow';
 import List from './screens/list/List';
 import Demo from './screens/demo/Demo';
+import Watch from './screens/example/watch';
 
 const Routes={
   SimpleStack:{
-    name: 'Stack Example',
+    name: 'SimpleStack',
     description: 'A card stack',
     screen: SimpleStack,
   },
   
   Register:{
-    name: 'Stack Example',
+    name: 'Register',
     description: 'A card stack',
     screen: Register,
   },
   Icons:{
-    name: 'Icons',
+    name: 'IconShow',
     description: 'A card stack',
     screen: IconShow,
   },
   List:{
-    name: 'Icons',
+    name: 'List',
     description: 'List',
     screen: List,
   },
   Demo:{
-    name: 'Icons',
+    name: '测试页',
     description: '测试页',
     screen: Demo,
+  },
+  Watch:{
+    name:'计时器',
+    description: '计时器',
+    screen: Watch,
   }
 
 
@@ -76,7 +82,7 @@ const MainScreen = ({navigation}) =>(
       <Banner/>
       {Object.keys(Routes).map((routeName:string)=>(
         
-        <Row key={routeName} title={routeName}  onPress={()=>{navigation.navigate(routeName)}}/>
+        <Row key={routeName} title={Routes[routeName].name}  onPress={()=>{navigation.navigate(routeName)}}/>
         
         ))}
       <Row title='列表列表列表' onPress={()=>{}}/>
