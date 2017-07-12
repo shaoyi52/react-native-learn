@@ -15,24 +15,22 @@ import Row from './components/Row';
 
 
 import SimpleStack from './screens/routeExample/SimpleStack';
-import Register from './screens/register/register';
 import IconShow from './screens/iconShow/IconShow';
 import List from './screens/list/List';
 import Demo from './screens/demo/Demo';
 import Watch from './screens/example/watch';
+
+import Register from './screens/register/register';
+import Login from './screens/login/Login';
+import Mine from './screens/mine/Mine';
 
 const Routes={
   SimpleStack:{
     name: 'SimpleStack',
     description: 'A card stack',
     screen: SimpleStack,
-  },
-  
-  Register:{
-    name: 'Register',
-    description: 'A card stack',
-    screen: Register,
-  },
+  }, 
+ 
   Icons:{
     name: 'IconShow',
     description: 'A card stack',
@@ -52,6 +50,21 @@ const Routes={
     name:'计时器',
     description: '计时器',
     screen: Watch,
+  },
+  Register:{
+    name: 'Register',
+    description: 'A card stack',
+    screen: Register,
+  },
+  Login:{
+    name: '登录',
+    description: '登录',
+    screen: Login,
+  },
+  Mine:{
+    name:'个人中心',
+    description: '个人中心',
+    screen: Mine,
   }
 
 

@@ -274,12 +274,14 @@ export default class extends Component{
 
 const styles = StyleSheet.create({
   watchContainer:{
-    alignItems: "center",
+   
     backgroundColor: "#f3f3f3",
     marginTop: 60,
   },
   watchFaceContainer:{
+
     width: deviceW,
+     alignItems: "center",
     paddingTop: 50, paddingLeft: 30, paddingRight:30, paddingBottom:40,
     backgroundColor: "#fff",
     borderBottomWidth: 1, borderBottomColor:"#ddd",

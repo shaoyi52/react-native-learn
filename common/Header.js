@@ -52,7 +52,7 @@ class Header extends Component {
       return (
         <View style={styles.header}>
            <TouchableHighlight style={styles.hd_return} underlayColor="#f1f1f1"  onPress={() =>this._backPress()}>
-              <Icon name='ios-arrow-back' size={px2dp(60)}  />
+              <Icon name='ios-arrow-back' size={px2dp(60)} color="#fff" />
           </TouchableHighlight>
           <Text style={styles.hd_title}>{this.props.title}</Text>
           {(()=>{
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
       paddingHorizontal:px2dp(42), 
       alignItems: 'center' ,
       justifyContent: 'center', 
-      backgroundColor: '#F1F1F1'  
+      backgroundColor:'#06BFFF'    
     },
     hd_return:{
         position :'absolute',left:0,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
       fontSize:px2dp(32),  
     },
     hd_title:{
-      fontSize: px2dp(31), color: '#3f3f3f' 
+      fontSize: px2dp(31), color: '#FFF' 
     },   
 });
 
